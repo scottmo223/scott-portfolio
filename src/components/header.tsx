@@ -64,6 +64,15 @@ export default function Header() {
                         </Link>
                     </li>
                     <li>
+                        <Link
+                            href="/about"
+                            className="hover:text-teal-400 transition px-2 py-1 block"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            Meet Scott
+                        </Link>
+                    </li>
+                    <li>
                         <a
                             href="https://www.instagram.com/scottmoralesdrum"
                             target="_blank"
