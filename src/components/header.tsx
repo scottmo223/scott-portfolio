@@ -72,45 +72,6 @@ export default function Header() {
                             Meet Scott
                         </Link>
                     </li>
-                    <li>
-                        <a
-                            href="https://www.instagram.com/scottmoralesdrum"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-teal-400 transition px-2 py-1 flex items-center gap-1"
-                        >
-                            Instagram
-                            <span aria-hidden className="inline-block">
-                                ↗
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://www.linkedin.com/in/rscottmorales/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-teal-400 transition px-2 py-1 flex items-center gap-1"
-                        >
-                            LinkedIn
-                            <span aria-hidden className="inline-block">
-                                ↗
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://github.com/scottmo223"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-teal-400 transition px-2 py-1 flex items-center gap-1"
-                        >
-                            GitHub
-                            <span aria-hidden className="inline-block">
-                                ↗
-                            </span>
-                        </a>
-                    </li>
                 </ul>
             </nav>
         </header>
