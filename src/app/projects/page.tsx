@@ -1,3 +1,8 @@
 export default function Projects() {
-  return <div>Projects</div>;
+  return (<div className="prose">
+    <h1>
+      Projects
+    </h1>
+    <p>Coming soon!</p>
+  </div>);
 }
