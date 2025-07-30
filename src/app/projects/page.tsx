@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Minesweeper from "./minesweeper/page";
 
 export default function Projects() {
   return (
