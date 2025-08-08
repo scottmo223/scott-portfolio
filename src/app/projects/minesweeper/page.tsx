@@ -81,8 +81,8 @@ export default function Minesweeper() {
 
         if (board[row][col].mine) {
             // Reveal all mines
-            setBoard(board.map((r, i) =>
-                r.map((cell, j) => ({
+            setBoard(board.map((r) =>
+                r.map((cell) => ({
                     ...cell,
                     revealed: cell.mine ? true : cell.revealed,
                 }))
@@ -160,7 +160,7 @@ export default function Minesweeper() {
         wasLongPressed.current = false;
         longPressTimeout.current = setTimeout(() => {
             wasLongPressed.current = true;
-            handleFlag({ preventDefault: () => { } } as any, row, col);
+            handleFlag({ preventDefault: () => { } } as React.MouseEvent<HTMLTableCellElement>, row, col);
         }, 500); // 500ms threshold for long press
     }
 
