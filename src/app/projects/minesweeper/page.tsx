@@ -154,63 +154,76 @@ export default function Minesweeper() {
     }
 
     return (
-        <main className="flex flex-col items-center mt-6">
-            <h1 className="text-2xl font-bold mb-4">Minesweeper</h1>
-            <div className="flex gap-8 mb-4">
-                <div className="flex gap-2">
-                    <span className="font-semibold">Flags:</span>
-                    <span>{flags}</span>
-                </div>
-                <div className="flex gap-2">
-                    <span className="font-semibold">Mines:</span>
-                    <span>{MINES}</span>
-                </div>
-            </div>
-            <table className="border-collapse" style={{ userSelect: "none" }}>
-                <tbody>
-                    {board.map((row, i) => (
-                        <tr key={i}>
-                            {row.map((cell, j) => {
-                                let cellStyle =
-                                    "w-8 h-8 border border-black text-center align-middle font-bold cursor-pointer select-none transition";
-                                if (cell.revealed) cellStyle += " bg-white";
-                                else if (cell.flagged) cellStyle += " bg-black text-white";
-                                else cellStyle += " bg-gray-300 hover:bg-gray-400";
-                                if (cell.mine && cell.revealed) cellStyle += " bg-red-500 text-black";
-                                return (
-                                    <td
-                                        key={j}
-                                        className={cellStyle}
-                                        onClick={() => handleCellClick(i, j)}
-                                        onContextMenu={e => handleFlag(e, i, j)}
+        <div className="w-full">
+            <main className="flex flex-col items-center mt-6">
+                <h1 className="text-2xl font-bold mb-4">Minesweeper</h1>
+                <div className="flex flex-col md:flex-row items-center">
+                    <div className="md:mr-8 md:w-64 mb-4 md:mb-0 relative">
+                        <h2 className="text-lg font-semibold mb-2">How to Play</h2>
+                        <ul className="list-disc list-inside text-sm space-y-1">
+                            <li><strong>Left Click</strong> (Tap on mobile): Reveal the cell</li>
+                            <li><strong>Right Click</strong> (Long Press on mobile): Flag or unflag a cell</li>
+                            <li>Reveal all safe cells to win</li>
+                        </ul>
+                        {/* Modal */}
+                        {gameStatus && (
+                            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50 pointer-events-none">
+                                <div className="bg-white p-6 rounded shadow-md w-64 text-center pointer-events-auto">
+                                    <h2 className="text-xl font-bold mb-4">
+                                        {gameStatus === "win" ? "You Won!" : "You Lost!"}
+                                    </h2>
+                                    <button
+                                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                                        onClick={startNewGame}
                                     >
-                                        {cell.revealed && cell.mine && "💣"}
-                                        {cell.revealed && !cell.mine && cell.numberBombs > 0 && cell.numberBombs}
-                                        {!cell.revealed && cell.flagged && "🚩"}
-                                    </td>
-                                );
-                            })}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
-            {/* Modal */}
-            {gameStatus && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white p-6 rounded shadow-md w-64 text-center">
-                        <h2 className="text-xl font-bold mb-4">
-                            {gameStatus === "win" ? "You Won!" : "You Lost!"}
-                        </h2>
-                        <button
-                            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                            onClick={startNewGame}
-                        >
-                            New Game
-                        </button>
+                                        New Game
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    <div className="flex-1 flex flex-col items-center">
+                        <div className="flex gap-8 mb-4">
+                            <div className="flex gap-2">
+                                <span className="font-semibold">Flags:</span>
+                                <span>{flags}</span>
+                            </div>
+                            <div className="flex gap-2">
+                                <span className="font-semibold">Mines:</span>
+                                <span>{MINES}</span>
+                            </div>
+                        </div>
+                        <table className="border-collapse" style={{ userSelect: "none" }}>
+                            <tbody>
+                                {board.map((row, i) => (
+                                    <tr key={i}>
+                                        {row.map((cell, j) => {
+                                            let cellStyle =
+                                                "w-8 h-8 border border-black text-center align-middle font-bold cursor-pointer select-none transition";
+                                            if (cell.revealed) cellStyle += " bg-white";
+                                            else if (cell.flagged) cellStyle += " bg-black text-white";
+                                            else cellStyle += " bg-gray-300 hover:bg-gray-400";
+                                            if (cell.mine && cell.revealed) cellStyle += " bg-red-500 text-black";
+                                            return (
+                                                <td
+                                                    key={j}
+                                                    className={cellStyle}
+                                                    onClick={() => handleCellClick(i, j)}
+                                                    onContextMenu={e => handleFlag(e, i, j)}
+                                                >
+                                                    {cell.revealed && cell.mine && "💣"}
+                                                    {cell.revealed && !cell.mine && cell.numberBombs > 0 && cell.numberBombs}
+                                                    {!cell.revealed && cell.flagged && "🚩"}
+                                                </td>
+                                            );
+                                        })}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            )}
-        </main>
+            </main>
+        </div>
     );
 }
