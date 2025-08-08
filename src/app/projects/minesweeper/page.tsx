@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 type Cell = {
     mine: boolean;
@@ -64,8 +64,10 @@ export default function Minesweeper() {
     const [revealed, setRevealed] = useState(0);
     const [flags, setFlags] = useState(0);
     const [gameStatus, setGameStatus] = useState<null | "win" | "lose">(null);
+    const longPressTimeout = useRef<NodeJS.Timeout | null>(null);
+    const wasLongPressed = useRef(false);
+    const suppressClick = useRef(false);
 
-    // Helper to reset the game
     function startNewGame() {
         setBoard(generateBoard());
         setRevealed(0);
@@ -73,7 +75,7 @@ export default function Minesweeper() {
         setGameStatus(null);
     }
 
-    // Handle left click (reveal)
+    //left click (reveal)
     function handleCellClick(row: number, col: number) {
         if (gameStatus || board[row][col].flagged || board[row][col].revealed) return;
 
@@ -89,7 +91,7 @@ export default function Minesweeper() {
             return;
         }
 
-        // Reveal cells recursively
+        //reveal cells
         const visited: boolean[][] = Array.from({ length: ROWS }, () =>
             Array.from({ length: COLS }, () => false)
         );
@@ -132,7 +134,7 @@ export default function Minesweeper() {
         }
     }
 
-    // Handle right click (flag)
+    // right click (flag)
     function handleFlag(
         e: React.MouseEvent<HTMLTableCellElement>,
         row: number,
@@ -153,6 +155,27 @@ export default function Minesweeper() {
         setBoard(newBoard);
     }
 
+    // mobile touch events
+    function handleTouchStart(row: number, col: number) {
+        wasLongPressed.current = false;
+        longPressTimeout.current = setTimeout(() => {
+            wasLongPressed.current = true;
+            handleFlag({ preventDefault: () => { } } as any, row, col);
+        }, 500); // 500ms threshold for long press
+    }
+
+    function handleTouchEnd() {
+        if (longPressTimeout.current) {
+            clearTimeout(longPressTimeout.current);
+            longPressTimeout.current = null;
+        }
+        if (wasLongPressed.current) {
+            suppressClick.current = true;
+        }
+    }
+
+
+
     return (
         <div className="w-full">
             <main className="flex flex-col items-center mt-6">
@@ -169,7 +192,7 @@ export default function Minesweeper() {
                         {gameStatus && (
                             <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50 pointer-events-none">
                                 <div className="bg-white p-6 rounded shadow-md w-64 text-center pointer-events-auto">
-                                    <h2 className="text-xl font-bold mb-4">
+                                    <h2 className="text-xl font-bold mb-4 text-black">
                                         {gameStatus === "win" ? "You Won!" : "You Lost!"}
                                     </h2>
                                     <button
@@ -199,7 +222,7 @@ export default function Minesweeper() {
                                     <tr key={i}>
                                         {row.map((cell, j) => {
                                             let cellStyle =
-                                                "w-8 h-8 border border-black text-center align-middle font-bold cursor-pointer select-none transition";
+                                                "w-8 h-8 border border-black text-center align-middle font-bold cursor-pointer select-none transition text-black";
                                             if (cell.revealed) cellStyle += " bg-white";
                                             else if (cell.flagged) cellStyle += " bg-black text-white";
                                             else cellStyle += " bg-gray-300 hover:bg-gray-400";
@@ -208,8 +231,16 @@ export default function Minesweeper() {
                                                 <td
                                                     key={j}
                                                     className={cellStyle}
-                                                    onClick={() => handleCellClick(i, j)}
+                                                    onClick={() => {
+                                                        if (suppressClick.current) {
+                                                            suppressClick.current = false;
+                                                            return;
+                                                        }
+                                                        handleCellClick(i, j);
+                                                    }}
                                                     onContextMenu={e => handleFlag(e, i, j)}
+                                                    onTouchStart={() => handleTouchStart(i, j)}
+                                                    onTouchEnd={() => handleTouchEnd()}
                                                 >
                                                     {cell.revealed && cell.mine && "💣"}
                                                     {cell.revealed && !cell.mine && cell.numberBombs > 0 && cell.numberBombs}
