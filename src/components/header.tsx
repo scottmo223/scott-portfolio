@@ -54,7 +54,7 @@ export default function Header() {
                             Projects
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link
                             href="/services"
                             className="hover:text-teal-400 transition px-2 py-1 block"
@@ -62,7 +62,7 @@ export default function Header() {
                         >
                             Services
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link
                             href="/about"

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Projects() {
   return (
-    <div className="prose">
+    <div className="prose dark:prose-invert">
       <h1>
         Projects
       </h1>

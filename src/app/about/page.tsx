@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="prose max-w-full">
+    <div className="prose max-w-full dark:prose-invert">
       <h1 className="">Who is Scott Morales?</h1>
       <p>Hey, I’m Scott.</p>
       <p>
