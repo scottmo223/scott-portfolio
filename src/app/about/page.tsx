@@ -39,13 +39,13 @@ export default function About() {
       <h2>The Army project</h2>
       <p>
         For a few years I was one of three developers who built the U.S.
-        Army's E-EFMP system from scratch — the platform that moved the
+        Army&apos;s E-EFMP system from scratch — the platform that moved the
         Exceptional Family Member Program off paper for thousands of military
         families in its pilot. We each wore every hat: pages, workflows,
         status models, automating approvals that used to move by mail,
         installation directory listings, and an in-app community forum so
         families could easily talk to each other. It needed a security
-        clearance and a stack of security training, and it's still work I'm proud of contributing to.{" "}
+        clearance and a stack of security training, and it&apos;s still work I&apos;m proud of contributing to.{" "}
         <Link href="/work/efmp">Read the case study →</Link>
       </p>
 
@@ -54,15 +54,15 @@ export default function About() {
         Alongside the engineering, I co-founded{" "}
         <Link href="/vantage-method">Vantage Method</Link>, a software development
         and marketing agency that helps businesses turn ideas into products and leads into
-        customers. I've also co-founded Wescot Solutions and ran UnDootie,
+        customers. I&apos;ve also co-founded Wescot Solutions and ran UnDootie,
         a local pet-service startup. Building the product is one skill, getting
         people to actually use and pay for it is a completely different one.
-        I'm only good at one of those.
+        I&apos;m only good at one of those.
       </p>
 
       <h2>Music as identity</h2>
       <p>
-        Music isn't a side note for me — it's a whole other room in
+        Music isn&apos;t a side note for me — it&apos;s a whole other room in
         the house. Fellowship Piano is quiet, relaxing piano. ScottMo is
         where I mess with production ideas and write stupid songs. And I drum. 
         <Link href="/music">Hear the music →</Link>
@@ -77,8 +77,8 @@ export default function About() {
 
       <h2>Right now</h2>
       <p>
-        Lately I'm deep in AI infrastructure. I've been building MCP servers, chat bots, vector databases, custom agents. 
-        And then I've been building iOS apps and getting into React Native and Swift. Along with trying to stay up to date
+        Lately I&apos;m deep in AI infrastructure. I&apos;ve been building MCP servers, chat bots, vector databases, custom agents.
+        And then I&apos;ve been building iOS apps and getting into React Native and Swift. Along with trying to stay up to date
         on the latest and greatest in AI and software development.
         I like being on the edge where the tooling is still a little
         uncomfortable.
@@ -86,10 +86,10 @@ export default function About() {
 
       <h2>The human stuff</h2>
       <p>
-        I'm a dad in a family of five, a jiu jitsu blue belt, and a firm
+        I&apos;m a dad in a family of five, a jiu jitsu blue belt, and a firm
         believer that breakfast tacos and 90s country music are load-bearing
         parts of a good week. If you need someone who can solve problems, build
-        things from scratch, or just talk shop over coffee — don't hit me up because I'm maxed out and I can't say no.
+        things from scratch, or just talk shop over coffee — don&apos;t hit me up because I&apos;m maxed out and I can&apos;t say no.
       </p>
 
       <EvasiveContactButton />
