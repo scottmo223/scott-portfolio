@@ -1,5 +1,6 @@
 import Link from "next/link";
 import TypingRoles from "@/components/typing-roles";
+import EvasiveContactButton from "@/components/evasive-contact-button";
 
 const hubs: { href: string; label: string; blurb: string }[] = [
   {
@@ -27,11 +28,6 @@ const hubs: { href: string; label: string; blurb: string }[] = [
     href: "/notes",
     label: "Notes",
     blurb: "Writing on engineering and entrepreneurship.",
-  },
-  {
-    href: "/contact",
-    label: "Contact",
-    blurb: "Best ways to reach me.",
   },
 ];
 
@@ -78,6 +74,18 @@ export default function Home() {
             <p className="mt-2 text-sm opacity-80">{h.blurb}</p>
           </Link>
         ))}
+      </section>
+
+      {/* Standalone so the evasive button can't stretch the grid row, and a
+          fixed min-height so its shrink / GAME OVER states don't shift the footer. */}
+      <section className="flex min-h-[22rem] flex-col">
+        <div className="text-lg font-semibold">Contact</div>
+        <p className="mt-2 text-sm opacity-80">
+          I&apos;m too busy — please don&apos;t ask me to do anything. I
+          can&apos;t say no.
+        </p>
+        {/* opener="" — the static subhead above carries the pre-catch line. */}
+        <EvasiveContactButton opener="" />
       </section>
     </div>
   );

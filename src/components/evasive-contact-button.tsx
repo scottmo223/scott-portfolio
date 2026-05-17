@@ -3,23 +3,74 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-// Endless escalating heckles — cycles as you land hits.
-const TEASES = [
-  "(I did say I was maxed out…)",
-  "Lucky shot. Won't happen again.",
-  "Okay, you're actually good at this.",
-  "One more and I'm gone for real.",
+// Escalating heckles, one tier per catch. Each tier has several
+// interchangeable lines; one is picked at random per catch so repeat
+// plays feel varied instead of scripted. TEASES[0] is the pre-catch
+// opener — pass the `opener` prop to override just that line.
+const TEASES: string[][] = [
+  [
+    "(I did say I was maxed out…)",
+    "Catch the button, earn the email. Those are the rules.",
+    "It moves. That's the whole bit. Good luck.",
+    "Fair warning: it's faster than it looks.",
+    "You can try. It's quicker than your cursor and your deadlines.",
+    "This is the part where you realize I'm hard to reach on purpose.",
+  ],
+  [
+    "Lucky shot. Won't happen again.",
+    "Beginner's luck. The button's just warming up.",
+    "Cute. The button allowed that one.",
+    "One down. It's not even trying yet.",
+    "Okay, that one was free.",
+    "Nice. Now it's actually paying attention.",
+  ],
+  [
+    "Okay, you're actually good at this.",
+    "Two? Alright, I'm mildly impressed.",
+    "Huh. You've clearly done this before.",
+    "Fine — you have a mouse and a dream.",
+    "The button respects you a little now.",
+    "Okay, this is no longer an accident.",
+  ],
+  [
+    "One more and I'm gone for real.",
+    "Last one. The button is sweating.",
+    "One to go. It's running out of corners.",
+    "Almost. Don't get cocky now.",
+    "Final round. The button does not consent to this.",
+    "One more hit and you've earned bragging rights.",
+  ],
 ];
+
+const GAME_OVER: string[] = [
+  "Caught it four times and it still escaped. The button wins.",
+  "Four hits and it bailed anyway. Respect — to the button.",
+  "You won the game and lost the email. Poetic.",
+  "Impressive. Pointless, but impressive.",
+  "The button retired undefeated. You were close.",
+  "Congrats, you beat a button and got nothing. Worth it?",
+];
+
+const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
 
 const MAX_HITS = 4;
 // Shrinks with every successful click, so each hit is harder than the last.
 const SCALES = [1, 0.68, 0.44, 0.28];
 
-export default function EvasiveContactButton() {
+export default function EvasiveContactButton({
+  opener,
+}: {
+  opener?: string;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLAnchorElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [hits, setHits] = useState(0);
+  // Deterministic on first render (no Math.random) so SSR and client agree;
+  // variety kicks in once the user actually interacts.
+  const [phrase, setPhrase] = useState(() =>
+    opener !== undefined ? opener : TEASES[0][0],
+  );
   const [reducedMotion, setReducedMotion] = useState(false);
   const [canHover, setCanHover] = useState(true);
 
@@ -70,13 +121,16 @@ export default function EvasiveContactButton() {
   const onHit = (e: React.MouseEvent) => {
     e.preventDefault();
     if (gameOver) return;
-    setHits((h) => h + 1);
-    if (hits + 1 < MAX_HITS) relocate();
+    const next = hits + 1;
+    setHits(next);
+    setPhrase(next >= MAX_HITS ? pick(GAME_OVER) : pick(TEASES[next]));
+    if (next < MAX_HITS) relocate();
   };
 
   const reset = () => {
     setHits(0);
     setPos({ x: 0, y: 0 });
+    setPhrase(opener !== undefined ? opener : pick(TEASES[0]));
   };
 
   // Reduced motion: don't torment people who opted out — plain, kind link.
@@ -129,9 +183,7 @@ export default function EvasiveContactButton() {
         )}
       </div>
       <p className="not-prose mt-2 text-sm italic text-foreground/60 min-h-[1.25rem]">
-        {gameOver
-          ? "Caught it four times and it still escaped. The button wins."
-          : TEASES[hits]}
+        {phrase}
       </p>
     </div>
   );
