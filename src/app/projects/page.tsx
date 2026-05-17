@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Fun Stuff — Scott Morales",
   description: "Side experiments and small games from Scott Morales.",
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsFunStuff() {

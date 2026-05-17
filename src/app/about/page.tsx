@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "About Scott Morales — Developer, Entrepreneur, Musician",
   description:
     "The story behind Scott Morales — East Texas roots, a self-taught path into software and a WGU Computer Science degree, founding Vantage Method, the Army E-EFMP project, and music.",
+  alternates: { canonical: "/about" },
 };
 
 export default function About() {

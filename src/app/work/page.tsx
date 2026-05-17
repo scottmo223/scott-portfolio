@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Work — Scott Morales | Case Studies & Projects",
   description:
     "Selected case studies and projects from Scott Morales — including the U.S. Army E-EFMP digital transformation, Vantage Method client work, and AI products built for SherpasAI.",
+  alternates: { canonical: "/work" },
 };
 
 type WorkItem = {

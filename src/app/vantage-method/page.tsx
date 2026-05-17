@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Vantage Method — Web Development & Marketing Agency",
   description:
     "Vantage Method is a web development and marketing agency co-founded by Scott Morales — websites, CRM setup, automation, and lead-to-customer systems for small businesses.",
+  alternates: { canonical: "/vantage-method" },
 };
 
 const capabilities = [

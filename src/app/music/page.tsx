@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Music — Scott Morales | Fellowship Piano, ScottMo, Drums",
   description:
     "The music side of Scott Morales — Fellowship Piano on Spotify, ScottMo experiments, and drumming on Instagram.",
+  alternates: { canonical: "/music" },
 };
 
 const BAR_COUNT = 64;

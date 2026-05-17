@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     "What I've Learned After 3 Years Running a Dev Agency — Scott Morales",
   description:
     "Three years co-running Vantage Method — the parts they don't tell you on Twitter: scope, retainers, communication, and why engineering rigor is the real differentiator.",
+  alternates: { canonical: "/notes/three-years-running-an-agency" },
 };
 
 export default function ThreeYearsRunningAnAgency() {

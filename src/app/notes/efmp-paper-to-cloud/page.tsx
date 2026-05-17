@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     "Building the Army E-EFMP System: From Paper to the Cloud — Scott Morales",
   description:
     "What it actually takes to move a program serving 1,000+ military families off paper — workflows, automated approvals, and a three-developer team that wore every hat.",
+  alternates: { canonical: "/notes/efmp-paper-to-cloud" },
 };
 
 export default function EfmpPaperToCloud() {

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     "Building MCP Servers for Business Automation in 2026 — Scott Morales",
   description:
     "How Model Context Protocol changes what an AI agent can safely do inside a business — and why the hard engineering is the permission boundary, not the model.",
+  alternates: { canonical: "/notes/mcp-servers-for-business-automation" },
 };
 
 export default function McpServersForBusinessAutomation() {

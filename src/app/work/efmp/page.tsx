@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Army E-EFMP Case Study — Scott Morales",
   description:
     "How the U.S. Army's Exceptional Family Member Program went from paper to cloud — built from scratch by a three-developer team. A case study from Scott Morales.",
+  alternates: { canonical: "/work/efmp" },
 };
 
 export default function EfmpCaseStudy() {

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Notes — Scott Morales",
   description:
     "Writing from Scott Morales — engineering, entrepreneurship, music, and the in-between.",
+  alternates: { canonical: "/notes" },
 };
 
 type Note = {
