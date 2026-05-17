@@ -10,15 +10,12 @@ export default function Contact() {
   return (
     <div className="prose dark:prose-invert max-w-3xl">
       <h1>Contact</h1>
+      <h2>Dang, how did you find this page?</h2>
       <p>
         Best way to reach me — pick the one that fits.
       </p>
 
       <ul>
-        <li>
-          <strong>Software / consulting:</strong>{" "}
-          <a href="mailto:scott@scottmorales.dev">scott@scottmorales.dev</a>
-        </li>
         <li>
           <strong>Vantage Method (agency):</strong>{" "}
           <a href="mailto:scott@vantagemethod.com">scott@vantagemethod.com</a>

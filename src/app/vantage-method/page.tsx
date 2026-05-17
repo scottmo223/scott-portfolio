@@ -4,12 +4,12 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Vantage Method — Web Development & Marketing Agency",
   description:
-    "Vantage Method is a web development and marketing agency co-founded by Scott Morales — websites, CRM setup, GoHighLevel automation, and lead-to-customer systems for small businesses.",
+    "Vantage Method is a web development and marketing agency co-founded by Scott Morales — websites, CRM setup, automation, and lead-to-customer systems for small businesses.",
 };
 
 const capabilities = [
   { k: "Web", t: "Websites that load fast and convert" },
-  { k: "CRM", t: "GoHighLevel, Salesforce, custom — set up and cleaned up" },
+  { k: "CRM", t: "Custom setups — built and cleaned up" },
   { k: "Automation", t: "The repetitive manual work, gone" },
   { k: "Funnels", t: "Lead capture, email & SMS sequences" },
 ];
@@ -104,10 +104,12 @@ export default function VantageMethod() {
 
         <div className="mt-12">
           <Link
-            href="/contact"
+            href="https://vantagemethod.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-black transition hover:bg-neutral-200"
           >
-            Book a call
+            Check it out
             <span
               aria-hidden
               className="transition-transform group-hover:translate-x-1"
@@ -188,10 +190,12 @@ export default function VantageMethod() {
             Let&apos;s turn your leads into customers.
           </h2>
           <Link
-            href="/contact"
+            href="https://vantagemethod.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-black transition hover:bg-neutral-200"
           >
-            Book a call
+            Check it out
             <span
               aria-hidden
               className="transition-transform group-hover:translate-x-1"

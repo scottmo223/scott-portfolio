@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Work — Scott Morales | Case Studies & Projects",
   description:
-    "Selected case studies and projects from Scott Morales — including the U.S. Army E-EFMP digital transformation, Vantage Method client work, and AI/MCP infrastructure.",
+    "Selected case studies and projects from Scott Morales — including the U.S. Army E-EFMP digital transformation, Vantage Method client work, and AI products built for SherpasAI.",
 };
 
 type WorkItem = {
@@ -31,19 +31,20 @@ const work: WorkItem[] = [
     slug: "vantage-method",
     title: "Vantage Method — Web + Marketing Agency",
     outcome:
-      "Co-founded agency delivering websites, CRM setups, GoHighLevel automation, and marketing for small businesses.",
-    stack: ["Next.js", "GoHighLevel", "Automation"],
+      "Co-founded agency delivering websites, CRM setups, automation, and marketing for small businesses.",
+    stack: ["Next.js", "Automation"],
     category: "Agency",
     href: "/vantage-method",
   },
   {
-    slug: "mcp-servers",
-    title: "MCP Servers for Business Automation",
+    slug: "ai-sherpas",
+    title: "AI Sherpas — SherpasAI",
     outcome:
-      "Building Model Context Protocol servers that let AI agents safely interact with business systems.",
-    stack: ["MCP", "TypeScript", "Python"],
+      "Built AI assistants for SherpasAI: Social Butterfly for social media brand building & content, and the CEO Data Sherpa for executive business intelligence.",
+    stack: ["AI agents", "Automation"],
     category: "AI",
-    href: "/work",
+    href: "https://sherpasai.com",
+    external: true,
   },
 ];
 
@@ -61,6 +62,9 @@ export default function WorkIndex() {
           <Link
             key={w.slug}
             href={w.href}
+            {...(w.external
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
             className="block rounded-xl border border-black/10 dark:border-white/10 p-5 hover:border-teal-400 transition"
           >
             <div className="text-xs uppercase tracking-wider opacity-60">
