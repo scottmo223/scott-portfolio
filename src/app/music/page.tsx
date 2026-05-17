@@ -100,34 +100,45 @@ export default function Music() {
 
           {/* ScottMo + Drums stacked */}
           <div className="grid grid-rows-2 gap-px bg-white/10">
-            <a
-              href="https://www.instagram.com/scottmomusic"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex flex-col justify-between overflow-hidden bg-[#0b0b10] p-7 transition-colors hover:bg-[#0e0e16] sm:p-10"
-            >
+            <div className="group relative flex flex-col justify-between overflow-hidden bg-[#0b0b10] p-7 transition-colors sm:p-10">
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-teal-500/[0.08] to-transparent" />
               <div className="relative">
-                <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal-400/80">
-                  02 / the experiments
-                </p>
+                <div className="flex items-baseline justify-between">
+                  <p className="font-mono text-xs uppercase tracking-[0.3em] text-teal-400/80">
+                    02 / the experiments
+                  </p>
+                  <span className="font-mono text-xs text-neutral-600">
+                    Spotify
+                  </span>
+                </div>
                 <h2 className="mt-4 text-4xl font-semibold text-white">
                   ScottMo
                 </h2>
                 <p className="mt-3 text-neutral-400">
                   Beats, layers, half-finished ideas.
                 </p>
+                <div className="mt-6 overflow-hidden rounded-xl ring-1 ring-white/10">
+                  <iframe
+                    title="ScottMo on Spotify"
+                    src="https://open.spotify.com/embed/artist/4O9GwpSsGEDetRzL7iwdG9?utm_source=generator&theme=0"
+                    width="100%"
+                    height="152"
+                    frameBorder={0}
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                  />
+                </div>
               </div>
-              <span className="relative mt-8 inline-flex items-center gap-2 font-mono text-sm text-teal-300">
+              <a
+                href="https://www.instagram.com/scottmomusic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative mt-6 inline-flex items-center gap-2 font-mono text-sm text-teal-300 transition-transform hover:translate-x-1"
+              >
                 @scottmomusic
-                <span
-                  aria-hidden
-                  className="transition-transform group-hover:translate-x-1"
-                >
-                  ↗
-                </span>
-              </span>
-            </a>
+                <span aria-hidden>↗</span>
+              </a>
+            </div>
 
             <a
               href="https://www.instagram.com/scottmoralesdrum"
