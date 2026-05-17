@@ -34,9 +34,11 @@ any page whose source file it matches.
 - `src/components/evasive-contact-button.tsx` — the About page "Get in touch"
   button **deliberately flees the cursor and never navigates**. It's a game, not a
   bug. It degrades to a plain working link under `prefers-reduced-motion`.
-- The **Contact page is intentionally unlisted**: `/contact` is removed from the
-  nav in `src/components/header.tsx` and reachable only by typing the URL. Leave it
-  unlinked.
+- The **Contact page is intentionally unlinked**: `/contact` is removed from the
+  nav in `src/components/header.tsx` — nothing on the site links to it; you reach
+  it by typing the URL. The joke is the missing link, not secrecy: it *is* listed
+  in `src/app/sitemap.ts` and crawlable on purpose. Keep it out of the nav; keep
+  it in the sitemap.
 
 If a task seems to require "repairing" either of these, confirm with the user first.
 

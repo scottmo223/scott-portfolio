@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Scott Morales — Full Stack Developer, Entrepreneur & Musician | Lindale, TX",
+      "Scott Morales — Software Engineer & Entrepreneur | East Texas",
     template: "%s",
   },
   description:
@@ -30,8 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title:
-      "Scott Morales — Full Stack Developer, Entrepreneur & Musician",
+    title: "Scott Morales — Software Engineer & Entrepreneur",
     description:
       "Software engineer, agency co-founder, and musician. Case studies, music, and notes.",
     siteName: "Scott Morales",
@@ -48,7 +47,7 @@ const personJsonLd = {
   address: {
     "@type": "PostalAddress",
     addressRegion: "TX",
-    addressLocality: "Lindale",
+    addressLocality: "East Texas",
     addressCountry: "US",
   },
   sameAs: [
