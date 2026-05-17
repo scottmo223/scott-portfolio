@@ -22,9 +22,11 @@ export default function TypingRoles() {
     }
 
     if (deleting && text === "") {
-      setDeleting(false);
-      setRoleIndex((i) => (i + 1) % ROLES.length);
-      return;
+      const t = setTimeout(() => {
+        setDeleting(false);
+        setRoleIndex((i) => (i + 1) % ROLES.length);
+      }, DELETE_MS);
+      return () => clearTimeout(t);
     }
 
     const t = setTimeout(
